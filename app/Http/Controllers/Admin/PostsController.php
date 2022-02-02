@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Post;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class PostsController extends Controller
 {
@@ -14,7 +16,12 @@ class PostsController extends Controller
      */
     public function index()
     {
-        //
+        // per prendere i dati dello user
+        $loggedUser = Auth::user();
+
+        $posts = Post::all();
+
+        return view('admin.posts.index', compact('posts', 'loggedUser'));
     }
 
     /**

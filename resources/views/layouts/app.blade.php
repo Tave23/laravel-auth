@@ -26,6 +26,17 @@
                 <a class="navbar-brand" href="{{ route('home') }}">
                     Torna al sito
                 </a>
+
+                {{-- si vedrà ciò che c'è qui dentro solo se autenticato(loggato) --}}
+                @auth
+                
+                {{-- link per andare all'elenco dei post --}}
+                <a class="navbar-brand" href="{{ route('admin.posts.index') }}">
+                    Elenco posts
+                </a>
+                
+                @endauth
+                
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>

@@ -24,8 +24,11 @@ Route::middleware('auth')
     ->name('admin.')
     ->prefix('admin')
     ->group(function (){
-
+        Route::get('/', 'HomeController@index')->name('index');
+        
         // qui si inseriscono tutte le rotte che si potranno vedere solo da loggati
-        Route::get('/', 'PostController@index')->name('index');
+
+        Route::resource('/posts', 'PostsController');
+
 
     });
