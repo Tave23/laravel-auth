@@ -17,6 +17,16 @@
                     <div class="title m-b-md">
                         <p>Ciao {{ $loggedUser->name }}, la tua mail è {{ $loggedUser->email }}</p> 
                         <p>Questa è l'area per i loggati</p>
+
+                        {{-- si vedrà ciò che c'è qui dentro solo se autenticato(loggato) --}}
+                        @auth
+                        
+                        {{-- link per andare all'elenco dei post --}}
+                        <a href="{{ route('admin.posts.index') }}">
+                            Clicca qui per andare all'elenco dei posts
+                        </a>
+                        
+                        @endauth
                     </div>
                 </div>
             </div>

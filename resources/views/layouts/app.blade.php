@@ -31,7 +31,7 @@
                 @auth
                 
                 {{-- link per andare all'elenco dei post --}}
-                <a class="navbar-brand" href="{{ route('admin.posts.index') }}">
+                <a href="{{ route('admin.posts.index') }}">
                     Elenco posts
                 </a>
                 
