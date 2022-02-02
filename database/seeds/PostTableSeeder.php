@@ -20,7 +20,7 @@ class PostTableSeeder extends Seeder
             $new_post->title_post = $faker->sentence();
             $new_post->content = $faker->text();
             $new_post->slug = Post::createSlug($new_post->title_post);
-
+            
             // dump($new_post->slug);
 
             // fondamentale salvare
