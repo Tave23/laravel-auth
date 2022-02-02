@@ -14,7 +14,9 @@
                         </div>
                     @endif
 
-                    {{ __('You are logged in!') }}
+                    <div class="title m-b-md">
+                        Questa è l'area per i loggati
+                    </div>
                 </div>
             </div>
         </div>
