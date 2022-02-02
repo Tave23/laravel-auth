@@ -17,13 +17,15 @@ class PostTableSeeder extends Seeder
             
             $new_post = new Post();
 
-            $new_post->title_post = $faker->sentence(4);
-            $new_post->content = $faker->text(50);
+            $new_post->title_post = $faker->sentence();
+            $new_post->content = $faker->text();
             $new_post->slug = Post::createSlug($new_post->title_post);
+
+            // dump($new_post->slug);
+
             // fondamentale salvare
             $new_post->save();
 
-            // dump($new_post->slug);
 
 
         }
