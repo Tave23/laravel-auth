@@ -15,7 +15,8 @@
                     @endif
 
                     <div class="title m-b-md">
-                        Questa è l'area per i loggati
+                        <p>Ciao {{ $loggedUser->name }}, la tua mail è {{ $loggedUser->email }}</p> 
+                        <p>Questa è l'area per i loggati</p>
                     </div>
                 </div>
             </div>
