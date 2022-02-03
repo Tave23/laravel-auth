@@ -17,7 +17,7 @@
          @endif
 
          {{-- per farel'update va aggiunta l'action (a update) con il metodo put e il @csrf --}}
-         <form action="{{ route('admin.posts.update', $post) }}" class="mt-5">
+         <form action="{{ route('admin.posts.update', $post) }}" method="POST" class="mt-5">
             @csrf
             @method('PUT')
 
