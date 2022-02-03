@@ -24,8 +24,10 @@
             {{-- input title --}}
             <div class="mb-3">
                <label for="title_post" class="form-label">Titolo Post</label>
-               <input type="text" name="title_post" class="form-control" id="title_post"
-               placeholder="Inserisci il titolo..." value="{{ old('title_post') }}">
+               <input type="text" name="title_post" 
+               class="form-control @error('title_post') is-invalid @enderror"
+               id="title_post" placeholder="Inserisci il titolo..." 
+               value="{{ old('title_post') }}">
 
                {{-- messaggio di errore sotto il form --}}
                @error('title_post')
@@ -38,9 +40,10 @@
             {{-- input content --}}
             <div class="mb-3">
                <label for="content" class="form-label">Contenuto del Post</label>
-               <textarea type="text" name="content" class="form-control" id="content" 
-               placeholder="Inserisci il contenuto del post..." style="height: 200px"
-               >{{ old('content') }}</textarea>
+               <textarea type="text" name="content" 
+               class="form-control @error('content') is-invalid @enderror"
+               id="content" placeholder="Inserisci il contenuto del post..." 
+               style="height: 200px">{{ old('content') }}</textarea>
 
                {{-- messaggio di errore sotto il form --}}
                @error('content')
