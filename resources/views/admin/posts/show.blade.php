@@ -36,13 +36,19 @@
 
          <div class="row">
 
-            <a href="{{route('admin.posts.edit', $post) }}" type="button" class="btn btn-warning mx-3">
+            <a href="{{route('admin.posts.edit', $post) }}" type="button" class="btn btn-warning mr-3">
                Edit
-            </button>
-
-            <a type="button" class="btn btn-danger">
-               Delete
             </a>
+
+            {{-- per la funzione delete bisogna NECESSARIAMENTE usare il form con il @method DELETE e @csrf --}}
+            <form onsubmit="return confirm('Sicuro di voler eliminare {{ $post->title }}')" 
+               action="{{ route('admin.posts.destroy', $post) }}">
+               @csrf
+               @method('DELETE')
+
+               <button type="submit" type="button" class="btn btn-danger">Delete</button>
+
+            </form>
 
          </div>
          

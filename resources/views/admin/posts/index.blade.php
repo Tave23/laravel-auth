@@ -2,8 +2,15 @@
 
 @section('content')
 <div class="container">
-      <div class="row justify-content-center">
+      <div class="justify-content-center">
          <h2 class="text-left">Ciao {{ $loggedUser->name}}! Ecco l'elenco dei post</h2>
+
+         {{-- post eliminato --}}
+         @if (session('deleted_post'))
+            <div class="alert alert-success" role="alert">
+               {{ session('deleted_post') }}
+            </div>
+         @endif
 
 
          <table class="table my-3">
@@ -37,9 +44,17 @@
                         </a>
                      </td>
                      <td>
-                        <a type="button" class="btn btn-danger">
-                           Delete
-                        </a>
+                        
+                        {{-- per la funzione delete bisogna NECESSARIAMENTE usare il form con il @method DELETE e @csrf --}}
+                        <form onsubmit="return confirm('Sicuro di voler eliminare {{ $post->title }}')" 
+                           action="{{ route('admin.posts.destroy', $post) }}" method="POST">
+                           @csrf
+                           @method('DELETE')
+
+                           <button type="submit" type="button" class="btn btn-danger">Delete</button>
+
+                        </form>
+
                      </td>
                   </tr>
 
@@ -47,6 +62,8 @@
                
                </tbody>
             </table>
+           
+            {{$posts->links()}}
       </div>
 </div>
 @endsection

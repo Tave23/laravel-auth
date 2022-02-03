@@ -19,7 +19,7 @@ class PostsController extends Controller
         // per prendere i dati dello user
         $loggedUser = Auth::user();
 
-        $posts = Post::all();
+        $posts = Post::orderBy('id','desc')->paginate(5);
 
         return view('admin.posts.index', compact('posts', 'loggedUser'));
     }
@@ -99,7 +99,13 @@ class PostsController extends Controller
      */
     public function edit($id)
     {
-        //
+        $post = Post::find($id);
+
+        if ($post) {
+            return view('admin.posts.edit', compact('post'));
+        }
+
+        abort(404, 'Post non presente nel database');
     }
 
     /**
@@ -109,9 +115,31 @@ class PostsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Post $post)
     {
-        //
+        $request->validate(
+            [
+                'title_post' => 'required|min:2|max:255',
+                'content' => 'required|min:5'
+            ],
+            [
+                'title_post.required' => "Inserire un titolo",
+                'title_post.min' => "Inserire almeno :min caratteri",
+                'title_post.max' => "Inserire meno di :max caratteri",
+                'content.required' => "Inserire il contenuto del post",
+                'content.min' => "Inserire almeno :min caratteri"
+            ]
+        );
+
+        $edit_data = $request->all();
+
+        if ($edit_data['title_post'] != $post->title_post) {
+            $edit_data['slug'] = Post::createSlug($edit_data['title_post']);
+        }
+
+        $post->update($edit_data);
+
+        return redirect()->route('admin.posts.index', $post);
     }
 
     /**
@@ -120,8 +148,10 @@ class PostsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Post $post)
     {
-        //
+        $post->delete();
+
+        return redirect()->route('admin.posts.index')->with('deleted_post', "Il post: $post->title_post è stato eliminato.");
     }
 }
