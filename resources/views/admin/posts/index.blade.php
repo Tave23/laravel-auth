@@ -34,3 +34,7 @@
       </div>
 </div>
 @endsection
+
+@section('title_page')
+   Posts List
+@endsection

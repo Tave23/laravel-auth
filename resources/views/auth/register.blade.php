@@ -75,3 +75,7 @@
     </div>
 </div>
 @endsection
+
+@section('title_page')
+    Register
+@endsection
