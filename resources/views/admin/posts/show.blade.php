@@ -33,6 +33,18 @@
          <p class="my-3">
             Data ultima modifica: {{$post->updated_at}}
          </p>
+
+         <div class="row">
+
+            <a href="{{route('admin.posts.edit', $post) }}" type="button" class="btn btn-warning mx-3">
+               Edit
+            </button>
+
+            <a type="button" class="btn btn-danger">
+               Delete
+            </a>
+
+         </div>
          
 
          
