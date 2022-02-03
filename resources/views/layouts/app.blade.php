@@ -40,8 +40,13 @@
                 @auth
                 
                 {{-- link per andare all'elenco dei post --}}
-                <a href="{{ route('admin.posts.index') }}">
+                <a class="mr-3" href="{{ route('admin.posts.index') }}">
                     Elenco posts
+                </a>
+
+                {{-- link per andare all'elenco dei post --}}
+                <a href="{{ route('admin.posts.create') }}">
+                    Crea nuovo post
                 </a>
                 
                 @endauth
