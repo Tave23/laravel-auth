@@ -48,7 +48,7 @@ class PostsController extends Controller
                 'content' => 'required|min:5'
             ],
             [
-                'title_post.require' => "Inserire un titolo",
+                'title_post.required' => "Inserire un titolo",
                 'title_post.min' => "Inserire almeno :min caratteri",
                 'title_post.max' => "Inserire meno di :max caratteri",
                 'content.required' => "Inserire il contenuto del post",
