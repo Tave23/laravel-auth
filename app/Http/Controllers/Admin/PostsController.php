@@ -42,11 +42,35 @@ class PostsController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate(
+            [
+                'title_post' => 'required|min:2|max:255',
+                'content' => 'required|min:5'
+            ],
+            [
+                'title_post.require' => "Inserire un titolo",
+                'title_post.min' => "Inserire almeno :min caratteri",
+                'title_post.max' => "Inserire meno di :max caratteri",
+                'content.required' => "Inserire il contenuto del post",
+                'content.min' => "Inserire almeno :min caratteri"
+            ]
+        );
+
         $created_post = $request->all();
+        // dd($created_post);
+        $new_post = new Post();
 
-        dd($created_post);
+        // vado a riempire $new_post
+        $new_post->fill($created_post);
 
-        
+        // aggiungo lo slug usando la funzione 
+        $new_post->slug = Post::createSlug($new_post->title_post);
+
+        // salvo
+        $new_post->save();
+
+        // redirect a show
+        return redirect()->route('admin.posts.show', $new_post);
 
     }
 
