@@ -27,19 +27,19 @@
                      <td>{{ $post->content }}</td>
                      <td>{{ $post->slug }}</td>
                      <td>
-                        <button type="button" class="btn btn-success">
+                        <a href="{{ route('admin.posts.show', $post) }}" type="button" class="btn btn-success ">
                            Show
-                        </button>
+                        </a>
                      </td>
                      <td>
-                        <button type="button" class="btn btn-warning">
+                        <a href="{{route('admin.posts.edit', $post) }}" type="button" class="btn btn-warning">
                            Edit
-                        </button>
+                        </a>
                      </td>
                      <td>
-                        <button type="button" class="btn btn-danger">
+                        <a type="button" class="btn btn-danger">
                            Delete
-                        </button>
+                        </a>
                      </td>
                   </tr>
 
