@@ -42,7 +42,7 @@
 
             {{-- per la funzione delete bisogna NECESSARIAMENTE usare il form con il @method DELETE e @csrf --}}
             <form onsubmit="return confirm('Sicuro di voler eliminare {{ $post->title }}')" 
-               action="{{ route('admin.posts.destroy', $post) }}">
+               action="{{ route('admin.posts.destroy', $post) }}" method="POST">
                @csrf
                @method('DELETE')
 
