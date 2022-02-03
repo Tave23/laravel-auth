@@ -13,6 +13,7 @@
                   <th scope="col">Titolo del post</th>
                   <th scope="col">Contenuto del post</th>
                   <th scope="col">Slug</th>
+                  <th scope="col" colspan="3"></th>
                </tr>
                </thead>
 
@@ -25,6 +26,21 @@
                      <td>{{ $post->title_post }}</td>
                      <td>{{ $post->content }}</td>
                      <td>{{ $post->slug }}</td>
+                     <td>
+                        <button type="button" class="btn btn-success">
+                           Show
+                        </button>
+                     </td>
+                     <td>
+                        <button type="button" class="btn btn-warning">
+                           Edit
+                        </button>
+                     </td>
+                     <td>
+                        <button type="button" class="btn btn-danger">
+                           Delete
+                        </button>
+                     </td>
                   </tr>
 
                @endforeach
